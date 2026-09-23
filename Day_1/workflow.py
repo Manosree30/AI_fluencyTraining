@@ -1,3 +1,4 @@
+"""System 2: a rule-based workflow. Fixed if/else rules, no LLM at all."""
 import re
 from config import COURSE_FEES, QUESTIONS
 
@@ -9,14 +10,11 @@ def workflow(question):
         return "Sorry, I can only answer questions about course fees."
 
     text = question.lower()
-
     if "total" in text:
         total = sum(fees)
         percent = re.search(r"(\d+)\s*%", text)
-
         if "scholarship" in text and percent:
             total = total * (1 - int(percent.group(1)) / 100)
-
         return f"Total fee: Rs. {total:,.0f}"
 
     if len(fees) == 1:
@@ -26,7 +24,6 @@ def workflow(question):
 
 if __name__ == "__main__":
     print("\n=== SYSTEM 2: RULE-BASED WORKFLOW (no LLM) ===\n")
-
     for question in QUESTIONS:
         print("Q:", question)
         print("A:", workflow(question))

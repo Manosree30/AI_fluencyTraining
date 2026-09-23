@@ -1,2 +1,6 @@
 openai>=1.40.0
 python-dotenv>=1.0.0
+<<<<<<< HEAD
+=======
+requests
+>>>>>>> dd67b33ac1445f4d3edcd9ccded106d2e0fc3736
